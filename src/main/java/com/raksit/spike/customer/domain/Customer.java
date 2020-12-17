@@ -14,7 +14,7 @@ public class Customer implements Account {
   @Id
   private final String name;
 
-  @Relationship(type = "PARTNERED", direction = Direction.OUTGOING)
+  @Relationship(type = "PARTNERS_WITH", direction = Direction.OUTGOING)
   private final List<Partnership> partnerships = new ArrayList<>();
 
   public Customer(String name) {

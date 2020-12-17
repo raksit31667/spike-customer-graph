@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerRepository extends Neo4jRepository<Customer, String> {
 
-  @Query("MATCH (c:Customer)-[r:PARTNERED]->(d:DeliveryAddress) WHERE d.name = $name RETURN c")
+  @Query("MATCH (c:Customer)-[r:PARTNERS_WITH]->(d:DeliveryAddress) WHERE d.name = $name RETURN c")
   List<Customer> findCustomersByDeliveryAddressName(String name);
 
-  @Query("MATCH (c:Customer)-[:PARTNERED]->(:DeliveryAddress)-[:PARTNERED]->(:Payer {name:$name}) RETURN c")
+  @Query("MATCH (c:Customer)-[:PARTNERS_WITH]->(:DeliveryAddress)-[:PARTNERS_WITH]->(:Payer {name:$name}) RETURN c")
   List<Customer> findCustomersByPayerName(String name);
 }
