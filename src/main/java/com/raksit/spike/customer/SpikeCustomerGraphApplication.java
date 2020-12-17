@@ -29,6 +29,7 @@ public class SpikeCustomerGraphApplication {
     return args -> {
       customerRepository.deleteAll();
       deliveryAddressRepository.deleteAll();
+      payerRepository.deleteAll();
 
       Customer customer = new Customer("SP1");
       Customer customer2 = new Customer("SP2");
